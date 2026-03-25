@@ -29,11 +29,21 @@ La fonction gère les spécificateurs suivants :
 
 #include "main.h"
 
+/**
+ * main - Programme de test pour _printf avec Hello World
+ * * Return: Toujours 0
+ */
 int main(void)
 {
-    _printf("Bonjour %s !\n", "Holberton");
-    _printf("Un caractère : %c\n", 'H');
-    _printf("Pourcentage : %%\n");
+    /* Utilisation de %s pour une chaîne */
+    _printf("Message: %s\n", "Hello World");
+
+    /* Utilisation de %c pour un caractère */
+    _printf("Première lettre: %c\n", 'H');
+
+    /* Utilisation de %% pour le signe pourcentage */
+    _printf("Succès du test à 100%%\n");
+
     return (0);
 }
 
