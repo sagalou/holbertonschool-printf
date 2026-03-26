@@ -25,28 +25,6 @@ La fonction gère les spécificateurs suivants :
 | **`%s`** | Affiche une chaîne de caractères. |
 | **`%%`** | Affiche le signe pourcentage. |
 
-## 💡 Exemple C
-
-#include "main.h"
-
-/**
- * main - Programme de test pour _printf avec Hello World
- * * Return: Toujours 0
- */
-int main(void)
-{
-    /* Utilisation de %s pour une chaîne */
-    _printf("Message: %s\n", "Hello World");
-
-    /* Utilisation de %c pour un caractère */
-    _printf("Première lettre: %c\n", 'H');
-
-    /* Utilisation de %% pour le signe pourcentage */
-    _printf("Succès du test à 100%%\n");
-
-    return (0);
-}
-
 ## 📁 Structure du projet_printf.c 
 - Fonction principale et gestion de la boucle.main.h : 
 - Prototype de la fonction et bibliothèques nécessaires.man_3_printf : 
