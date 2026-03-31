@@ -24,7 +24,10 @@ int print_string(va_list args)
 	int len = 0;
 
 	if (str == NULL)
+    {
 		str = "(null)";
+        return (6);
+    }
 	while (str[len])
 	{
 		write(1, &str[len], 1);
