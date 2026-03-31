@@ -1,0 +1,203 @@
+.TH _PRINTF 3 "2025" "Holberton School" "Library Functions Manual"
+.\"
+.\" ============================================================
+.\"  man page for _printf - Holberton School project
+.\" ============================================================
+.\"
+.SH NAME
+.B _printf
+\- produce formatted output
+.\"
+.SH SYNOPSIS
+.B #include \(dqmain.h\(dq
+.PP
+.BI "int _printf(const char *" format ", ...);"
+.\"
+.SH DESCRIPTION
+The
+.B _printf()
+function produces output according to a
+.I format
+string, writing to
+.BR stdout ,
+the standard output stream.
+.PP
+The
+.I format
+string is composed of zero or more directives:
+ordinary characters (not
+.BR % ),
+which are copied unchanged to the output, and conversion
+specifications, each introduced by the character
+.BR % .
+.PP
+.SS Conversion Specifiers
+Each conversion specification begins with
+.B %
+and ends with a
+.IR "conversion specifier" .
+The following specifiers are supported:
+.PP
+.TS
+tab(|) allbox;
+cb cb
+l l.
+Specifier|Description
+%c|Prints a single character
+%s|Prints a string of characters
+%%|Prints a literal percent sign
+.TE
+.PP
+.SS "The %c specifier"
+The
+.B %c
+specifier converts the
+.I int
+argument to an
+.I unsigned char
+and writes the resulting character to stdout.
+.PP
+.SS "The %s specifier"
+The
+.B %s
+specifier writes the characters of the string argument to stdout.
+If the argument is
+.BR NULL ,
+the string
+.I (null)
+is printed instead.
+.PP
+.SS "The %% specifier"
+A
+.B %%
+in the format string writes a single literal
+.B %
+character to stdout. No argument is consumed.
+.PP
+.SS "Unknown specifiers"
+If an unknown conversion specifier is encountered (e.g.
+.BR %r ),
+.B _printf()
+writes both the
+.B %
+and the unknown character as-is to stdout.
+.\"
+.SH RETURN VALUE
+On success,
+.B _printf()
+returns the number of characters printed,
+.B excluding
+the terminating null byte.
+.PP
+If
+.I format
+is
+.BR NULL ,
+.B _printf()
+returns
+.BR \-1 .
+.PP
+If the format string ends with a lone
+.B %
+(e.g.\&
+.IR \(dqhello %\(dq ),
+.B _printf()
+returns
+.BR \-1 .
+.\"
+.SH EXAMPLES
+.SS "Basic usage"
+.nf
+.B #include \(dqmain.h\(dq
+
+int main(void)
+{
+    _printf("Hello, World!\en");
+    /* Output: Hello, World! */
+
+    _printf("Character: %c\en", 'A');
+    /* Output: Character: A */
+
+    _printf("String: %s\en", "Holberton");
+    /* Output: String: Holberton */
+
+    _printf("Percent sign: %%\en");
+    /* Output: Percent sign: % */
+
+    return (0);
+}
+.fi
+.PP
+.SS "Return value"
+.nf
+int len;
+
+len = _printf("Hello\en");
+/* len == 6 */
+.fi
+.PP
+.SS "NULL string"
+.nf
+_printf("%s\en", NULL);
+/* Output: (null) */
+.fi
+.\"
+.SH NOTES
+This implementation does not support:
+.PP
+.RS 4
+.IP \(bu 2
+Flag characters
+.RB ( \- ,
+.BR + ,
+space,
+.BR # ,
+.BR 0 )
+.IP \(bu 2
+Field width
+.IP \(bu 2
+Precision
+.IP \(bu 2
+Length modifiers
+.RB ( h ,
+.BR l ,
+.BR L ...)
+.RE
+.PP
+For full
+.BR printf (3)
+functionality, see the standard C library.
+.\"
+.SH SEE ALSO
+.BR printf (3),
+.BR write (2),
+.BR stdarg (3),
+.BR va_start (3),
+.BR va_arg (3),
+.BR va_end (3)
+.\"
+.SH AUTHORS
+Written by Alexandre and Sagalou of
+.B Holberton School
+as part of the C printf project.
+.\"
+.\" ============================================================
+.\"        A S C I I   A R T   F O O T E R
+.\" ============================================================
+.SH "  "
+.nf
+  ______________________________________________________
+ /                                                      \\
+|   _   _       _ _               _                     |
+|  | | | | ___ | | |__   ___ _ __| |_ ___  _ __         |
+|  | |_| |/ _ \\| | '_ \\ / _ \\ '__| __/ _ \\| '_ \\        |
+|  |  _  | (_) | | |_) |  __/ |  | || (_) | | | |       |
+|  |_| |_|\\___/|_|_.__/ \\___|_|   \\__\\___/|_| |_|       |
+|                                                        |
+|        S c h o o l   -   C   P r i n t f              |
+|                    P r o j e c t                       |
+|                                                        |
+|   printf("%s", "Keep calm and code in C");             |
+|                                        > Holberton     |
+ \\______________________________________________________/
+.fi
